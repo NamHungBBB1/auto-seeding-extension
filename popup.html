@@ -1,53 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 
 <head>
-    <meta charset="utf-8" />
-    <title>FB Auto Gemini Bot</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            width: 280px;
-            padding: 12px;
-        }
-
-        input,
-        button {
-            width: 100%;
-            margin-top: 8px;
-            padding: 6px;
-        }
-
-        label {
-            font-size: 13px;
-        }
-
-        .small {
-            font-size: 12px;
-            color: #666;
-            margin-top: 6px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>FB Auto Seeding</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h3>FB Auto Gemini Bot</h3>
+    <div class="container">
+        <h2>FB Auto Seeding</h2>
 
-    <label>Google API Key (Gemini):</label>
-    <input id="apiKey" type="password" placeholder="Paste API key (server key)" />
+        <label>API Key Gemini:</label>
+        <input type="text" id="apiKey" placeholder="Nhập API Key">
 
-    <label>Max posts to process:</label>
-    <input id="maxPosts" type="number" value="3" min="1" />
+        <div class="buttons">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn">Stop</button>
+        </div>
 
-    <label>Step delay (ms):</label>
-    <input id="stepDelay" type="number" value="1800" min="200" />
-
-    <button id="saveBtn">Save Key & Config</button>
-    <button id="startBtn" style="margin-top:10px;background:green;color:white;">Start</button>
-    <button id="stopBtn" style="margin-top:6px;background:red;color:white;">Stop</button>
-
-    <div class="small">Note: Ensure Generative Language API (text-bison / Gemini) is enabled in Google Cloud and your
-        key has permission.</div>
+        <div id="log"></div>
+    </div>
 
     <script src="popup.js"></script>
 </body>
