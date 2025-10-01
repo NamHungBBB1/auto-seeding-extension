@@ -97,7 +97,7 @@
     // Sau khi click nút comment, chờ comment box xuất hiện trong vùng chứa phù hợp
     async function clickAndFindCommentBox(post, actionBar, opts = {}) {
         const timeout = opts.timeout ?? 8000;
-        const interval = opts.interval ?? 2000;
+        const interval = opts.interval ?? 5000;
 
         const commentBtn = actionBar.querySelector('div[aria-label="Viết bình luận"][role="button"]') ||
             actionBar.querySelector('div[aria-label*="Bình luận"][role="button"]');
@@ -122,16 +122,11 @@
 
                 if (!visible) continue;
 
-                if (captionSnippet && container && container.innerText && container.innerText.indexOf(captionSnippet) !== -1) {
-                    return { box, container };
-                }
-
                 const role = container.getAttribute && (container.getAttribute('role') || '');
-                if (!captionSnippet && role.toLowerCase().includes('dialog')) {
-                    return { box, container };
-                }
+                const ariaModal = container.getAttribute && container.getAttribute('aria-modal');
 
-                if (role.toLowerCase().includes('dialog')) {
+                // Only select comment boxes inside dialogs (detail view)
+                if (role.toLowerCase() === 'dialog' || ariaModal === 'true') {
                     return { box, container };
                 }
             }
@@ -194,7 +189,7 @@
 
                 if (!commentBox) {
                     console.log("➡️ Không thấy ô comment trong post. Bấm nút comment để mở detail view...");
-                    const found = await clickAndFindCommentBox(post, actionBar, { timeout: 9000, interval: 500 });
+                    const found = await clickAndFindCommentBox(post, actionBar, { timeout: 9000, interval: 3500 });
                     if (!found) {
                         console.warn("⛔ Không tìm thấy ô comment sau khi mở detail view → bỏ qua post");
                         break;

@@ -1,2 +1,2 @@
-- [x] Update manifest.json to restrict content scripts to https://www.facebook.com/AnnHome.VN and https://www.facebook.com/annhome.careers
-- [x] Update popup.html to add links to the two Facebook pages
+- [x] Modify clickAndFindCommentBox function in content.js to only select comment boxes inside dialogs (detail view)
+- [ ] Test the extension to ensure it picks the correct comment box
