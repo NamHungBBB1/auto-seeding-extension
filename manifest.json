@@ -15,7 +15,7 @@
     "content_scripts": [
         {
             "matches": [
-                "https://www.facebook.com/profile.php?id=61578840585170",
+                "https://www.facebook.com/AnnHome.VN",
                 "https://www.facebook.com/annhome.careers"
             ],
             "js": [
